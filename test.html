@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Backbone.Array Spec Runner</title>
+    
+    <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css">
+    <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
+    <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+
+    <script src="https://raw.github.com/documentcloud/underscore/master/underscore.js"></script>
+    <script src="https://raw.github.com/documentcloud/backbone/master/backbone.js"></script>
+
+    <script src="backbone.array.js"></script>
+    <script src="spec/backbone.array.spec.js"></script>
+
+    <script type="text/javascript">
+      (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+
+        var htmlReporter = new jasmine.HtmlReporter();
+
+        jasmineEnv.addReporter(htmlReporter);
+
+        jasmineEnv.specFilter = function(spec) {
+          return htmlReporter.specFilter(spec);
+        };
+
+        var currentWindowOnload = window.onload;
+
+        window.onload = function() {
+          if (currentWindowOnload) {
+            currentWindowOnload();
+          }
+          execJasmine();
+        };
+
+        function execJasmine() {
+          jasmineEnv.execute();
+        }
+
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
